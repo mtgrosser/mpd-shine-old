@@ -1,0 +1,1 @@
+/home/matthias/projects/mpd-shine/rc.d
