@@ -697,6 +697,10 @@ ENABLE_VORBIS_ENCODER_FALSE
 ENABLE_VORBIS_ENCODER_TRUE
 VORBISENC_LIBS
 VORBISENC_CFLAGS
+ENABLE_SHINE_ENCODER_FALSE
+ENABLE_SHINE_ENCODER_TRUE
+SHINE_LIBS
+SHINE_CFLAGS
 ENABLE_FLAC_ENCODER_FALSE
 ENABLE_FLAC_ENCODER_TRUE
 HAVE_FLAC_COMMON_FALSE
@@ -991,6 +995,7 @@ enable_ffado
 enable_ffmpeg
 enable_fifo
 enable_flac
+enable_shine
 enable_fluidsynth
 enable_gme
 enable_httpd_output
@@ -1093,6 +1098,8 @@ FFMPEG_CFLAGS
 FFMPEG_LIBS
 FLAC_CFLAGS
 FLAC_LIBS
+SHINE_CFLAGS
+SHINE_LIBS
 FLUIDSYNTH_CFLAGS
 FLUIDSYNTH_LIBS
 GME_CFLAGS
@@ -1768,6 +1775,7 @@ Optional Features:
   --disable-fifo          disable support for writing audio to a FIFO
                           (default: enable)
   --enable-flac           enable FLAC decoder
+  --enable-shine          enable shine encoder
   --enable-fluidsynth     enable MIDI support via fluidsynth (default: auto)
   --enable-gme            enable Blargg's game music emulator plugin
   --enable-httpd-output   enables the HTTP server output
@@ -6934,6 +6942,15 @@ if test "${with_tremor_includes+set}" = set; then :
 else
   tremor_includes=""
 fi
+
+
+# Check whether --enable-shine was given.
+if test "${enable_shine+set}" = set; then :
+  enableval=$enable_shine;
+else
+  enable_shine=no
+fi
+
 
 
 
@@ -12323,6 +12340,20 @@ fi
 else
   ENABLE_FLAC_ENCODER_TRUE='#'
   ENABLE_FLAC_ENCODER_FALSE=
+fi
+
+
+if test x$enable_shine = xyes; then
+
+$as_echo "#define ENABLE_SHINE 1" >>confdefs.h
+
+fi
+ if test x$enable_shine = xyes; then
+  ENABLE_SHINE_TRUE=
+  ENABLE_SHINE_FALSE='#'
+else
+  ENABLE_SHINE_TRUE='#'
+  ENABLE_SHINE_FALSE=
 fi
 
 
