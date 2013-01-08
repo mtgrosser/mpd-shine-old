@@ -673,6 +673,10 @@ if ENABLE_FLAC_ENCODER
 libencoder_plugins_a_SOURCES += src/encoder/flac_encoder.c
 endif
 
+if ENABLE_SHINE_ENCODER
+libencoder_plugins_a_SOURCES += src/encoder/shine_encoder.c
+endif
+
 else
 ENCODER_LIBS =
 endif

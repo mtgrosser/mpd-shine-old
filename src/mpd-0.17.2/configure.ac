@@ -277,6 +277,11 @@ AC_ARG_ENABLE(lame-encoder,
 		[enable the LAME mp3 encoder]),,
 	enable_lame_encoder=auto)
 
+AC_ARG_ENABLE(shine-encoder,
+	AS_HELP_STRING([--enable-shine-encoder],
+		[enable the Shine mp3 encoder]),,
+	enable_shine_encoder=auto)
+
 AC_ARG_ENABLE([libwrap],
 	AS_HELP_STRING([--enable-libwrap], [use libwrap]),,
 	[enable_libwrap=auto])
@@ -1134,6 +1139,7 @@ else
 	enable_twolame_encoder=no
 	enable_wave_encoder=no
 	enable_flac_encoder=no
+        enable_shine_encoder=no
 fi
 
 dnl ------------------------------- FLAC Encoder ------------------------------
@@ -1142,6 +1148,13 @@ if test x$enable_flac_encoder = xyes; then
 		[Define to enable the FLAC encoder plugin])
 fi
 AM_CONDITIONAL(ENABLE_FLAC_ENCODER, test x$enable_flac_encoder = xyes)
+
+dnl ------------------------------- Shine Encoder ------------------------------
+if test x$enable_shine_encoder = xyes; then
+        AC_DEFINE(ENABLE_SHINE_ENCODER, 1,
+                [Define to enable the Shine encoder plugin])
+fi
+AM_CONDITIONAL(ENABLE_SHINE_ENCODER, test x$enable_shine_encoder = xyes)
 
 dnl ---------------------------- Ogg Vorbis Encoder ---------------------------
 MPD_AUTO_PKG(vorbis_encoder, VORBISENC, [vorbisenc],
@@ -1199,6 +1212,7 @@ if test x$enable_vorbis_encoder != xno ||
 	test x$enable_lame_encoder != xno ||
 	test x$enable_twolame_encoder != xno ||
 	test x$enable_flac_encoder != xno ||
+	test x$enable_shine_encoder != xno ||
 	test x$enable_wave_encoder != xno; then
 	# at least one encoder plugin is enabled
 	enable_encoder=yes
@@ -1600,6 +1614,7 @@ if
 	test x$enable_httpd_output = xyes; then
 		printf '\nStreaming encoder support:\n\t'
 		results(flac_encoder, [FLAC])
+		results(shine_encoder, [Shine])
 		results(lame_encoder, [LAME])
 		results(vorbis_encoder, [Ogg Vorbis])
 		results(twolame_encoder, [TwoLAME])
