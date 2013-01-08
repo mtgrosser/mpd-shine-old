@@ -35,7 +35,7 @@ build() {
 		--enable-lastfm \
 		--enable-soundcloud \
 		--enable-pulse \
-		--enable-shine \
+		--enable-shine-encoder \
 		--disable-sidplay \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system
 
