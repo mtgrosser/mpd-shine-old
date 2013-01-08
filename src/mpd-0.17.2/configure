@@ -995,7 +995,7 @@ enable_ffado
 enable_ffmpeg
 enable_fifo
 enable_flac
-enable_shine
+enable_shine_encoder
 enable_fluidsynth
 enable_gme
 enable_httpd_output
@@ -1775,7 +1775,7 @@ Optional Features:
   --disable-fifo          disable support for writing audio to a FIFO
                           (default: enable)
   --enable-flac           enable FLAC decoder
-  --enable-shine          enable shine encoder
+  --enable-shine-encoder  enable shine encoder
   --enable-fluidsynth     enable MIDI support via fluidsynth (default: auto)
   --enable-gme            enable Blargg's game music emulator plugin
   --enable-httpd-output   enables the HTTP server output
@@ -6944,11 +6944,11 @@ else
 fi
 
 
-# Check whether --enable-shine was given.
-if test "${enable_shine+set}" = set; then :
-  enableval=$enable_shine;
+# Check whether --enable-shine-encoder was given.
+if test "${enable_shine_encoder+set}" = set; then :
+  enableval=$enable_shine_encoder;
 else
-  enable_shine=no
+  enable_shine_encoder=no
 fi
 
 
@@ -12343,17 +12343,17 @@ else
 fi
 
 
-if test x$enable_shine = xyes; then
+if test x$enable_shine_encoder = xyes; then
 
-$as_echo "#define ENABLE_SHINE 1" >>confdefs.h
+$as_echo "#define ENABLE_SHINE_ENCODER 1" >>confdefs.h
 
 fi
- if test x$enable_shine = xyes; then
-  ENABLE_SHINE_TRUE=
-  ENABLE_SHINE_FALSE='#'
+ if test x$enable_shine_encoder = xyes; then
+  ENABLE_SHINE_ENCODER_TRUE=
+  ENABLE_SHINE_ENCODER_FALSE='#'
 else
-  ENABLE_SHINE_TRUE='#'
-  ENABLE_SHINE_FALSE=
+  ENABLE_SHINE_ENCODER_TRUE='#'
+  ENABLE_SHINE_ENCODER_FALSE=
 fi
 
 

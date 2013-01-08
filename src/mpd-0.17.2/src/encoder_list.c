@@ -29,6 +29,7 @@ extern const struct encoder_plugin lame_encoder_plugin;
 extern const struct encoder_plugin twolame_encoder_plugin;
 extern const struct encoder_plugin wave_encoder_plugin;
 extern const struct encoder_plugin flac_encoder_plugin;
+extern const struct encoder_plugin shine_encoder_plugin;
 
 const struct encoder_plugin *const encoder_plugins[] = {
 	&null_encoder_plugin,
@@ -46,6 +47,9 @@ const struct encoder_plugin *const encoder_plugins[] = {
 #endif
 #ifdef ENABLE_FLAC_ENCODER
 	&flac_encoder_plugin,
+#endif
+#ifdef ENABLE_SHINE_ENCODER
+	&shine_encoder_plugin,
 #endif
 	NULL
 };
